@@ -1,0 +1,6 @@
+run_game.py
+.gemini/
+*.pyc
+__pycache__/
+node_modules/
+.DS_Store

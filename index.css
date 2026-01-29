@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Poppins:wght@400;600&display=swap');
+
+:root {
+    --bg-main: #202124;
+    --bg-card: #2d2e31;
+    --bg-input: #3c4043;
+    --text-primary: #bdc1c6;
+    --text-secondary: #9aa0a6;
+
+    --g-blue: #4285F4;
+    --g-red: #ea4335;
+    --g-yellow: #fbbc05;
+    --g-green: #34a853;
+    --g-grey: #5f6368;
+
+    --accent: var(--g-blue);
+    --border: rgba(255, 255, 255, 0.05);
+    --font-logo: 'Montserrat', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    /* narrowed for central layout */
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+header {
+    background: #1a1b1e;
+    border-bottom: 1px solid var(--border);
+    padding: 2.5rem 0;
+}
+
+.header-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.logo-central {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.brand-logo {
+    width: 120px;
+    height: 120px;
+    background: white;
+    padding: 15px;
+    border-radius: 50%;
+    object-fit: contain;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 3px solid var(--g-blue);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: var(--font-logo);
+    font-weight: 800;
+    font-size: 2.2rem;
+    color: var(--text-primary);
+}
+
+.logo span {
+    background: var(--g-grey);
+    color: #ffffff;
+    padding: 4px 16px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.nav-links {
+    display: flex;
+    gap: 3rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    font-family: var(--font-logo);
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.nav-links li:nth-child(1) a:hover {
+    color: var(--g-blue);
+}
+
+.nav-links li:nth-child(2) a:hover {
+    color: var(--g-red);
+}
+
+.nav-links li:nth-child(3) a:hover {
+    color: var(--g-yellow);
+}
+
+.main-grid {
+    margin-top: 3rem;
+}
+
+.search-container {
+    margin-bottom: 4rem;
+    display: flex;
+    justify-content: center;
+}
+
+.search-box {
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    padding: 1.2rem 2rem;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 600px;
+    transition: var(--transition);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.search-box:focus-within {
+    border-color: var(--g-blue);
+    background: #45494d;
+    transform: translateY(-2px);
+}
+
+.search-box input {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    width: 100%;
+    outline: none;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+}
+
+.bottom-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 4rem;
+    margin-bottom: 6rem;
+}
+
+.section-title {
+    font-family: var(--font-logo);
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: var(--border);
+}
+
+.cool-games .section-title {
+    color: var(--g-green);
+}
+
+.popular-projects .section-title {
+    color: var(--g-blue);
+}
+
+.list-item {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    margin-bottom: 1.2rem;
+    border-radius: 12px;
+    transition: var(--transition);
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.list-item:hover {
+    background: #3c4043;
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.02);
+}
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 5rem 0;
+    text-align: center;
+    background: #1a1b1e;
+}
+
+@media (max-width: 768px) {
+    .bottom-sections {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-links {
+        gap: 1.5rem;
+    }
+}
