@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Poppins:wght@400;600&family=Creepster&family=Nosifer&family=Butcherman&family=Eater&family=Rubik+Glitch&family=Rubik+Beastly&family=Rubik+Wet+Paint&display=swap');
 
 :root {
-    --bg-main: #202124;
-    --bg-card: #2d2e31;
-    --bg-input: #3c4043;
-    --text-primary: #bdc1c6;
-    --text-secondary: #9aa0a6;
+    --bg-main: #f0f2f5;
+    --bg-card: #ffffff;
+    --bg-input: #e9ecef;
+    --text-primary: #202124;
+    --text-secondary: #5f6368;
 
     --g-blue: #4285F4;
     --g-red: #ea4335;
@@ -14,7 +14,7 @@
     --g-grey: #5f6368;
 
     --accent: var(--g-blue);
-    --border: rgba(255, 255, 255, 0.05);
+    --border: rgba(0, 0, 0, 0.1);
     --font-logo: 'Montserrat', sans-serif;
     --font-body: 'Poppins', sans-serif;
     --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -24,6 +24,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.hidden {
+    display: none !important;
 }
 
 body {
@@ -41,59 +45,64 @@ body {
 }
 
 header {
-    background: #1a1b1e;
+    background: #ffffff;
     border-bottom: 1px solid var(--border);
     padding: 2.5rem 0;
 }
 
 .header-main {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     gap: 2rem;
+    position: relative;
+    left: -80px;
 }
 
 .logo-central {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 .brand-logo {
-    width: 120px;
-    height: 120px;
-    background: white;
-    padding: 15px;
-    border-radius: 50%;
+    width: 220px;
+    height: 220px;
     object-fit: contain;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    border: 3px solid var(--g-blue);
+    background: transparent;
 }
 
 .logo {
     display: flex;
-    align-items: center;
-    gap: 0.8rem;
+    flex-direction: column;
+    /* Stack "Gemini" and "Games Community" if roughly matching the image, or keep row? User said "together with it the inscription". Let's keep existing structure but maybe adjust font sizes */
+    align-items: flex-start;
+    gap: 0.2rem;
     font-family: var(--font-logo);
     font-weight: 800;
-    font-size: 2.2rem;
+    font-size: 1.5rem;
     color: var(--text-primary);
+    line-height: 1.2;
 }
 
 .logo span {
     background: var(--g-grey);
     color: #ffffff;
-    padding: 4px 16px;
-    border-radius: 50px;
-    font-size: 1.2rem;
+    padding: 2px 10px;
+    border-radius: 6px;
+    /* Pill shape like in image */
+    font-size: 0.9rem;
     font-weight: 600;
 }
 
 .nav-links {
     display: flex;
-    gap: 3rem;
+    gap: 1.5rem;
     list-style: none;
+    margin-left: auto;
+    align-items: center;
 }
 
 .nav-links a {
@@ -145,7 +154,7 @@ header {
 
 .search-box:focus-within {
     border-color: var(--g-blue);
-    background: #45494d;
+    background: #ffffff;
     transform: translateY(-2px);
 }
 
@@ -202,8 +211,8 @@ header {
 }
 
 .list-item:hover {
-    background: #3c4043;
-    border-color: rgba(255, 255, 255, 0.1);
+    background: #f1f3f4;
+    border-color: rgba(0, 0, 0, 0.1);
     transform: scale(1.02);
 }
 
@@ -211,7 +220,7 @@ footer {
     border-top: 1px solid var(--border);
     padding: 5rem 0;
     text-align: center;
-    background: #1a1b1e;
+    background: #f8f9fa;
 }
 
 @media (max-width: 768px) {
@@ -223,3 +232,894 @@ footer {
         gap: 1.5rem;
     }
 }
+
+/* --- Mode Toggle Styles --- */
+.mode-toggle-container {
+    margin-left: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.mode-toggle {
+    background: var(--bg-input);
+    border-radius: 50px;
+    display: flex;
+    padding: 2px;
+    gap: 2px;
+    border: 1px solid var(--border);
+}
+
+.mode-btn {
+    background: transparent;
+    border: none;
+    border-radius: 50px;
+    padding: 6px 12px;
+    font-family: var(--font-logo);
+    font-weight: 600;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.mode-btn.normal.active {
+    background: var(--g-blue);
+    color: white;
+}
+
+.mode-btn.horror.active {
+    background: var(--g-red);
+    color: white;
+}
+
+/* --- Theme Toggle Styles --- */
+.theme-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.publish-btn {
+    background: var(--g-blue);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    font-family: var(--font-logo);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.publish-btn:hover {
+    background: #3367d6;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+}
+
+.plus-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.theme-toggle {
+    background: var(--bg-input);
+    border-radius: 50px;
+    display: flex;
+    padding: 4px;
+    gap: 4px;
+    border: 1px solid var(--border);
+}
+
+.theme-btn {
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--text-secondary);
+}
+
+.theme-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.theme-btn.active {
+    background: #ffffff;
+    color: var(--g-yellow);
+    /* Sun/Moon color */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Dark Mode Overrides --- */
+body.dark-mode {
+    --bg-main: #202124;
+    --bg-card: #2d2e31;
+    --bg-input: #3c4043;
+    --text-primary: #bdc1c6;
+    --text-secondary: #9aa0a6;
+    --border: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode header,
+body.dark-mode footer {
+    background: #1a1b1e;
+}
+
+body.dark-mode .search-box:focus-within {
+    background: #45494d;
+    border-color: var(--g-blue);
+}
+
+body.dark-mode .list-item:hover {
+    background: #3c4043;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .theme-btn.active {
+    background: #3c4043;
+    color: #fbbc05;
+    /* Consistent yellow for active icon */
+}
+
+/* Adjust logo text in dark mode if needed, though variables handle most */
+
+/* --- Registration Modal Styles --- */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.modal.hidden {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-content {
+    background-color: var(--bg-card);
+    padding: 2.5rem;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border);
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    line-height: 1;
+}
+
+.close-modal:hover {
+    color: var(--g-red);
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg-input);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: var(--g-blue);
+    background: var(--bg-card);
+}
+
+/* Password Eye Icon Wrapper */
+.input-wrapper {
+    position: relative;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    user-select: none;
+    opacity: 0.7;
+}
+
+.eye-icon:hover {
+    opacity: 1;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--g-blue);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.submit-btn:hover {
+    background: #3367d6;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+}
+
+.error-msg {
+    color: var(--g-red);
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+
+body.dark-mode .modal {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* --- Account Profile Styles --- */
+.user-status {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+.user-status.developer {
+    background: rgba(66, 133, 244, 0.15);
+    color: var(--g-blue);
+}
+
+.user-status.assistant {
+    background: rgba(52, 168, 83, 0.15);
+    color: var(--g-green);
+}
+
+.user-status.idea-picker {
+    background: rgba(251, 188, 4, 0.15);
+    color: var(--g-yellow);
+}
+
+.user-status.user {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    background: #e0e0e0;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #757575;
+}
+
+.profile-avatar svg {
+    width: 60px;
+    height: 60px;
+    fill: currentColor;
+}
+
+.profile-info h2 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.4s ease forwards;
+}
+
+/* --- Reviews Styles --- */
+.stars-container {
+    font-size: 2.5rem;
+    color: #ccc;
+    margin: 1rem 0;
+    cursor: pointer;
+}
+
+.star {
+    transition: color 0.2s;
+}
+
+
+.star.filled {
+    color: var(--g-yellow);
+}
+
+#confirm-review-btn.confirmed {
+    background: var(--g-red);
+}
+
+.stars-container.disabled {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+/* --- Horror Mode --- */
+body.horror-mode {
+    --bg-main: #050505;
+    --bg-card: #0d0d0d;
+    --bg-input: #151515;
+    --text-primary: #ff3333;
+    --text-secondary: #992222;
+    --g-blue: #cc0000;
+    --g-red: #ff1a1a;
+    --g-yellow: #880000;
+    --g-green: #aa0000;
+    --g-grey: #331111;
+    --accent: #ff0000;
+    --border: rgba(255, 0, 0, 0.25);
+    --font-body: 'Rubik Glitch', 'Rubik Beastly', 'Creepster', 'Butcherman', 'Eater', cursive;
+    --font-logo: 'Rubik Wet Paint', 'Nosifer', 'Creepster', cursive;
+    font-family: var(--font-body);
+    background-color: var(--bg-main);
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(200, 0, 0, 0.05), transparent 80%),
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 100%, 100% 4px, 6px 100%;
+}
+
+body.horror-mode button,
+body.horror-mode input,
+body.horror-mode select,
+body.horror-mode textarea {
+    font-family: var(--font-body) !important;
+}
+
+
+body.horror-mode .theme-toggle-container {
+    display: none !important;
+}
+
+body.horror-mode header {
+    background: #020202;
+    border-bottom: 2px solid #ff0000;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+}
+
+body.horror-mode footer {
+    background: #020202;
+    border-top: 2px solid #ff0000;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+}
+
+body.horror-mode .logo {
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.7);
+    color: #ff0000;
+}
+
+body.horror-mode .logo span {
+    background: #ff0000;
+    color: #000000;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+    text-shadow: none;
+}
+
+body.horror-mode .publish-btn {
+    background: #880000;
+    border: 1px solid #ff0000;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.4);
+}
+
+body.horror-mode .publish-btn:hover {
+    background: #ff0000;
+    color: #000000;
+    box-shadow: 0 0 15px #ff0000;
+}
+
+body.horror-mode .nav-links a {
+    color: #aa2222;
+    font-family: var(--font-body);
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+}
+
+body.horror-mode .nav-links a:hover {
+    color: #ff0000 !important;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+body.horror-mode .search-box {
+    background: #111;
+    border: 1px solid #aa0000;
+    box-shadow: 0 4px 25px rgba(255, 0, 0, 0.15);
+}
+
+body.horror-mode .search-box:focus-within {
+    border-color: #ff0000;
+    background: #181818;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}
+
+body.horror-mode .search-box input {
+    color: #ff0000;
+}
+
+body.horror-mode .search-box input::placeholder {
+    color: #882222;
+}
+
+body.horror-mode .section-title {
+    font-family: var(--font-logo);
+    font-size: 1.8rem;
+    color: #ff1a1a !important;
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+
+body.horror-mode .section-title::after {
+    background: #ff0000;
+    box-shadow: 0 0 5px #ff0000;
+}
+
+body.horror-mode .list-item {
+    background: #0d0d0d;
+    border: 1px solid #331111;
+    color: #aa2222;
+}
+
+body.horror-mode .list-item:hover {
+    background: #1a0505;
+    border-color: #ff0000;
+    color: #ff3333;
+    transform: scale(1.02);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+body.horror-mode .modal {
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+}
+
+body.horror-mode .modal-content {
+    background-color: #0d0d0d;
+    border: 2px solid #ff0000;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
+}
+
+body.horror-mode .close-modal {
+    color: #aa2222;
+}
+
+body.horror-mode .close-modal:hover {
+    color: #ff0000;
+    text-shadow: 0 0 8px #ff0000;
+}
+
+body.horror-mode .form-group label {
+    color: #ff3333;
+}
+
+body.horror-mode .form-group input {
+    border: 1px solid #551111;
+    background: #151515;
+    color: #ff3333;
+}
+
+body.horror-mode .form-group input:focus {
+    border-color: #ff0000;
+    background: #201010;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+body.horror-mode .submit-btn {
+    background: #880000;
+    border: 1px solid #ff0000;
+    color: #ffffff;
+}
+
+body.horror-mode .submit-btn:hover {
+    background: #ff0000;
+    color: #000000;
+    box-shadow: 0 0 15px #ff0000;
+}
+
+body.horror-mode .star.filled {
+    color: #ff0000;
+    text-shadow: 0 0 10px #ff0000;
+}
+
+body.horror-mode .star:not(.filled) {
+    color: #331111;
+}
+
+body.horror-mode #confirm-review-btn.confirmed {
+    background: #440000;
+    border-color: #aa0000;
+    color: #aa2222;
+}
+
+body.horror-mode #confirm-review-btn.confirmed:hover {
+    background: #660000;
+    color: #ff3333;
+}
+
+body.horror-mode .mode-btn.normal.active {
+    background: #ff0000;
+    color: #000000;
+}
+
+body.horror-mode .mode-btn.horror.active {
+    background: #ff0000;
+    color: #000000;
+    box-shadow: 0 0 10px #ff0000;
+}
+
+/* Creepy Glitch Animation on Logo */
+@keyframes horrorGlitch {
+    0% {
+        text-shadow: 0 0 4px #ff0000;
+    }
+    49% {
+        text-shadow: 0 0 4px #ff0000;
+    }
+    50% {
+        text-shadow: -2px 0 red, 2px 0 blue;
+    }
+    52% {
+        text-shadow: 0 0 4px #ff0000;
+    }
+    98% {
+        text-shadow: 0 0 4px #ff0000;
+    }
+    99% {
+        text-shadow: 2px -1px red, -2px 2px darkred;
+    }
+    100% {
+        text-shadow: 0 0 4px #ff0000;
+    }
+}
+
+body.horror-mode .logo {
+    animation: horrorGlitch 3s infinite;
+}
+
+/* --- Publish Modal & Form Styles --- */
+.publish-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.8rem;
+}
+
+.publish-tabs .tab-btn {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.publish-tabs .tab-btn.active {
+    background: var(--g-blue);
+    color: white;
+}
+
+body.horror-mode .publish-tabs .tab-btn.active {
+    background: #880000;
+    color: #ffffff;
+    box-shadow: 0 0 10px #ff0000;
+}
+
+.publish-form-tab.hidden {
+    display: none;
+}
+
+.file-upload-zone {
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    background: var(--bg-main);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.file-upload-zone:hover {
+    border-color: var(--g-blue);
+    background: rgba(66, 133, 244, 0.05);
+}
+
+body.horror-mode .file-upload-zone:hover {
+    border-color: #ff0000;
+    background: rgba(255, 0, 0, 0.05);
+}
+
+.hidden-file-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.upload-prompt span {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.upload-preview {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 8px;
+    object-fit: contain;
+    margin-top: 0.5rem;
+}
+
+/* --- Feed Styling --- */
+.feed-section {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+
+.publications-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.feed-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+}
+
+.feed-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+body.horror-mode .feed-card {
+    border-color: #331111;
+    background: #0d0d0d;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.1);
+}
+
+body.horror-mode .feed-card:hover {
+    border-color: #ff0000;
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.2);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.card-author {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.card-badge {
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.card-badge.post {
+    background: rgba(66, 133, 244, 0.1);
+    color: var(--g-blue);
+}
+
+.card-badge.game {
+    background: rgba(52, 168, 83, 0.1);
+    color: var(--g-green);
+}
+
+body.horror-mode .card-badge.post {
+    background: rgba(255, 0, 0, 0.2);
+    color: #ff0000;
+}
+
+body.horror-mode .card-badge.game {
+    background: rgba(255, 0, 0, 0.2);
+    color: #ff3333;
+}
+
+.card-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    white-space: pre-wrap;
+}
+
+.card-media {
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+    max-height: 400px;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-media img,
+.card-media video {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+.card-video-link {
+    display: block;
+    margin-bottom: 1.5rem;
+    color: var(--g-red);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.card-video-link:hover {
+    text-decoration: underline;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card-btn {
+    padding: 0.8rem 1.5rem;
+    background: var(--g-blue);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.card-btn:hover {
+    background: #3367d6;
+    transform: translateY(-2px);
+}
+
+body.horror-mode .card-btn {
+    background: #880000;
+    border: 1px solid #ff0000;
+}
+
+body.horror-mode .card-btn:hover {
+    background: #ff0000;
+    color: #000;
+}
+
+.feed-placeholder {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary);
+    border: 2px dashed var(--border);
+    border-radius: 16px;
+    font-size: 1.1rem;
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg-input);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    outline: none;
+    resize: vertical;
+}
+
+.form-group textarea:focus {
+    border-color: var(--g-blue);
+    background: #ffffff;
+}
+
+body.horror-mode .form-group textarea {
+    border: 1px solid #551111;
+    background: #151515;
+    color: #ff3333;
+}
+
+body.horror-mode .form-group textarea:focus {
+    border-color: #ff0000;
+    background: #201010;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}

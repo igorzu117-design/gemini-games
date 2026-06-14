@@ -12,16 +12,46 @@
     <header>
         <div class="container">
             <div class="header-main">
+                <button class="publish-btn" id="publish-btn">
+                    <svg viewBox="0 0 24 24" class="plus-icon">
+                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                    </svg>
+                    Опубликовать пост, или игру
+                </button>
                 <div class="logo-central">
                     <img src="assets/logo.png" alt="Gemini Logo" class="brand-logo">
                     <div class="logo">Gemini <span>Games Community</span></div>
+
+                    <!-- Mode Toggle (Decorative) -->
+                    <div class="mode-toggle-container">
+                        <div class="mode-toggle">
+                            <button class="mode-btn normal active" title="Normal Mode">Normal</button>
+                            <button class="mode-btn horror" title="Horror Mode">Horror</button>
+                        </div>
+                    </div>
                 </div>
                 <nav>
                     <ul class="nav-links">
-                        <li><a href="#">Регистрация</a></li>
-                        <li><a href="#">Отзывы</a></li>
-                        <li><a href="#">Аккаунт</a></li>
+                        <li><a href="#" id="register-link">Регистрация</a></li>
+                        <li><a href="#" id="reviews-link">Отзывы</a></li>
+                        <li><a href="#" id="account-link">Аккаунт</a></li>
                     </ul>
+                    <div class="theme-toggle-container">
+                        <div class="theme-toggle">
+                            <button id="theme-light" class="theme-btn active" title="Light Mode">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z" />
+                                </svg>
+                            </button>
+                            <button id="theme-dark" class="theme-btn" title="Dark Mode">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
                 </nav>
             </div>
         </div>
@@ -39,18 +69,24 @@
 
                 <!-- Reactions removed as requested -->
 
+                <!-- Community Feed -->
+                <div class="feed-section">
+                    <h2 class="section-title">Лента сообщества</h2>
+                    <div id="publications-feed" class="publications-feed">
+                        <div class="feed-placeholder">Публикаций пока нет. Будьте первым, кто опубликует пост или игру!</div>
+                    </div>
+                </div>
+
                 <div class="bottom-sections">
                     <div class="cool-games">
                         <h2 class="section-title">Крутые игры</h2>
-                        <div class="list-item">Titan Battle</div>
-                        <div class="list-item">Space Odyssey</div>
-                        <div class="list-item">Cyber Arena</div>
+                        <div class="list-item">Игр ещё нету в тир листе :( Загрузите свои игры и попадите в тир лист!
+                        </div>
                     </div>
                     <div class="popular-projects">
                         <h2 class="section-title">Популярные проекты</h2>
-                        <div class="list-item">Gemini Engine</div>
-                        <div class="list-item">Community Hub</div>
-                        <div class="list-item">Game Dev AI</div>
+                        <div class="list-item">Игр ещё нету в тир листе :( Загрузите свои игры и попадите в тир лист!
+                        </div>
                     </div>
                 </div>
             </section>
@@ -63,6 +99,182 @@
             <p>ВсЕ ПрАвА пОчТи зАщИщЕнЫ :)</p>
         </div>
     </footer>
+    </footer>
+
+    <!-- Registration Modal -->
+    <div id="reg-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+
+            <!-- Step 1: Intro -->
+            <div id="reg-step-intro">
+                <h3>Здравствуйте!</h3>
+                <p style="margin: 1rem 0; color: var(--text-secondary); font-size: 1.1rem;">
+                    Вы захотели зарегистрироваться? Отличное решение!<br>
+                    Здесь вы можете попасть в мир своих фантазий!
+                </p>
+                <button id="go-to-reg-btn" class="submit-btn" style="margin-top: 1rem;">Зарегистрироваться</button>
+                <button id="go-to-login-btn" class="submit-btn"
+                    style="margin-top: 0.8rem; background: transparent; border: 1px solid var(--border); color: var(--text-primary);">Уже
+                    есть аккаунт? Войдите!</button>
+            </div>
+
+            <!-- Step 2: Form -->
+            <div id="reg-step-form" class="hidden">
+                <h2>Регистрация</h2>
+                <form id="reg-form">
+                    <div class="form-group">
+                        <label for="reg-nick">Никнейм</label>
+                        <input type="text" id="reg-nick" placeholder="Введите ваш никнейм" required>
+                        <div id="nick-error" class="error-msg hidden">К сожалению этот никнейм уже существует,
+                            придумайте другой!
+                        </div>
+                    </div>
+                    <div class="form-group password-group">
+                        <label for="reg-pass">Пароль от аккаунта</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="reg-pass" placeholder="Введите пароль" required>
+                            <span class="eye-icon" data-target="reg-pass">👁️</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group password-group">
+                        <label for="reg-pass-confirm">Подтвердите пароль</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="reg-pass-confirm" placeholder="Повторите пароль" required>
+                            <span class="eye-icon" data-target="reg-pass-confirm">👁️</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn" style="margin-top: 1rem;">Завершить регистрацию</button>
+                </form>
+            </div>
+
+            <!-- Step 3: Login Form -->
+            <div id="login-step-form" class="hidden">
+                <h2>Вход в аккаунт</h2>
+                <div id="login-error" class="error-msg hidden" style="margin-bottom: 1rem;">Неверно указан пароль.</div>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-nick">Никнейм</label>
+                        <input type="text" id="login-nick" placeholder="Введите ваш никнейм" required>
+                    </div>
+                    <div class="form-group password-group">
+                        <label for="login-pass">Пароль</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="login-pass" placeholder="Введите пароль" required>
+                            <span class="eye-icon" data-target="login-pass">👁️</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn" style="margin-top: 1rem;">Войти</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Removed extra closing div if present, or just ensuring reviews modal is here -->
+
+    <!-- Reviews Modal -->
+    <div id="reviews-modal" class="modal hidden">
+        <div class="modal-content" style="text-align: center;">
+            <span class="close-modal">&times;</span>
+            <h2>Оставьте отзыв</h2>
+            <div class="stars-container">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+            </div>
+            <div id="review-feedback" class="hidden fade-in">
+                <div id="review-emoji" style="font-size: 3rem; margin: 1rem 0;"></div>
+                <p id="review-text" style="color: var(--text-secondary); margin-bottom: 1rem;"></p>
+                <button id="confirm-review-btn" class="submit-btn hidden" style="margin-top: 1rem;">Потвердить
+                    отзыв</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Account Modal -->
+    <div id="account-modal" class="modal hidden">
+        <div class="modal-content" style="text-align: center;">
+            <span class="close-modal">&times;</span>
+            <div id="account-content">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Publish Modal -->
+    <div id="publish-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 1.5rem;">Опубликовать</h2>
+            
+            <!-- Tab buttons -->
+            <div class="publish-tabs">
+                <button type="button" class="tab-btn active" data-tab="tab-post">Пост</button>
+                <button type="button" class="tab-btn" data-tab="tab-game">Игра</button>
+            </div>
+            
+            <!-- Tab 1: Post Form -->
+            <form id="publish-post-form" class="publish-form-tab">
+                <div class="form-group">
+                    <label for="post-text">Текст поста</label>
+                    <textarea id="post-text" placeholder="О чем вы хотите рассказать?" rows="4" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Изображение (необязательно)</label>
+                    <div class="file-upload-zone" id="post-image-zone">
+                        <input type="file" id="post-image-input" accept="image/*" class="hidden-file-input">
+                        <div class="upload-prompt">
+                            <span>📸</span> Выберите или перетащите картинку
+                        </div>
+                        <img id="post-image-preview" class="upload-preview hidden" src="">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="post-video-url">Ссылка на видео (YouTube)</label>
+                    <input type="url" id="post-video-url" placeholder="https://www.youtube.com/watch?v=...">
+                </div>
+                
+                <button type="submit" class="submit-btn" style="margin-top: 1rem;">Опубликовать пост</button>
+            </form>
+            
+            <!-- Tab 2: Game Form -->
+            <form id="publish-game-form" class="publish-form-tab hidden">
+                <div class="form-group">
+                    <label for="game-title">Название игры</label>
+                    <input type="text" id="game-title" placeholder="Введите название игры" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="game-desc">Описание игры (необязательно)</label>
+                    <textarea id="game-desc" placeholder="Расскажите о вашей игре..." rows="4"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="game-url">Ссылка на игру</label>
+                    <input type="url" id="game-url" placeholder="https://example.com/play-my-game" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Видео-геймплей</label>
+                    <div class="file-upload-zone" id="game-video-zone">
+                        <input type="file" id="game-video-input" accept="video/*" class="hidden-file-input">
+                        <div class="upload-prompt">
+                            <span>🎥</span> Загрузите видео-геймплей
+                        </div>
+                        <video id="game-video-preview" class="upload-preview hidden" controls></video>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn" style="margin-top: 1rem;">Опубликовать игру</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
 </body>
 
 </html>
